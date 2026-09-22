@@ -5,6 +5,7 @@ literalmente para dar continuidad visual entre proyectos del portfolio.
 """
 
 import sys
+from datetime import datetime
 from pathlib import Path
 
 import pandas as pd
@@ -130,6 +131,8 @@ def build_dashboard(
     )
     tiles_html = _kpi_tiles_html(strategy_metrics, equal_weight_metrics, benchmark_metrics)
 
+    run_timestamp = datetime.now().strftime("%d/%m/%Y %H:%M")
+
     page = f"""<!DOCTYPE html>
 <html lang="es">
 <head>
@@ -203,7 +206,7 @@ def build_dashboard(
   <div class="hero-inner">
     <h1>Capstone: Multi-Strategy Portfolio</h1>
     <p>Momentum (Proyecto 2) decide qué activos están en juego; Markowitz (Proyecto 9) decide cómo repartir el capital entre ellos. Backtest real, rebalanceo mensual, sobre 8 acciones europeas.</p>
-    <div class="meta">Datos en vivo vía yfinance · integra los Proyectos 2 y 9 sin duplicar su lógica</div>
+    <div class="meta">Datos en vivo vía yfinance · integra los Proyectos 2 y 9 sin duplicar su lógica · Última ejecución: {run_timestamp}</div>
   </div>
 </div>
 
